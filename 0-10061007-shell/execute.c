@@ -14,597 +14,612 @@
 
 #include "global.h"
 #define DEBUG
-int goon = 0, ingnore = 0;       //ÓÃÓÚÉèÖÃsignalĞÅºÅÁ¿
-char *envPath[10], cmdBuff[40];  //Íâ²¿ÃüÁîµÄ´æ·ÅÂ·¾¶¼°¶ÁÈ¡Íâ²¿ÃüÁîµÄ»º³å¿Õ¼ä
-History history;                 //ÀúÊ·ÃüÁî
-Job *head = NULL;                //×÷ÒµÍ·Ö¸Õë
-pid_t fgPid;                     //µ±Ç°Ç°Ì¨×÷ÒµµÄ½ø³ÌºÅ
+int goon = 0, ingnore = 0, goonF = 0;       //ç”¨äºè®¾ç½®signalä¿¡å·é‡
+char *envPath[10], cmdBuff[40];  //å¤–éƒ¨å‘½ä»¤çš„å­˜æ”¾è·¯å¾„åŠè¯»å–å¤–éƒ¨å‘½ä»¤çš„ç¼“å†²ç©ºé—´
+History history;                 //å†å²å‘½ä»¤
+Job *head = NULL;                //ä½œä¸šå¤´æŒ‡é’ˆ
+pid_t fgPid;                     //å½“å‰å‰å°ä½œä¸šçš„è¿›ç¨‹å·
 
 /*******************************************************
-                  ¹¤¾ßÒÔ¼°¸¨Öú·½·¨
-********************************************************/
-/*ÅĞ¶ÏÃüÁîÊÇ·ñ´æÔÚ*/
+  å·¥å…·ä»¥åŠè¾…åŠ©æ–¹æ³•
+ ********************************************************/
+/*åˆ¤æ–­å‘½ä»¤æ˜¯å¦å­˜åœ¨*/
 int exists(char *cmdFile){
-    int i = 0;
-    if((cmdFile[0] == '/' || cmdFile[0] == '.') && access(cmdFile, F_OK) == 0){ //ÃüÁîÔÚµ±Ç°Ä¿Â¼
-        strcpy(cmdBuff, cmdFile);
-        return 1;
-    }else{  //²éÕÒysh.confÎÄ¼şÖĞÖ¸¶¨µÄÄ¿Â¼£¬È·¶¨ÃüÁîÊÇ·ñ´æÔÚ
-        while(envPath[i] != NULL){ //²éÕÒÂ·¾¶ÒÑÔÚ³õÊ¼»¯Ê±ÉèÖÃÔÚenvPath[i]ÖĞ
-            strcpy(cmdBuff, envPath[i]);
-            strcat(cmdBuff, cmdFile);
-            
-            if(access(cmdBuff, F_OK) == 0){ //ÃüÁîÎÄ¼ş±»ÕÒµ½
-                return 1;
-            }
-            
-            i++;
-        }
-    }
-    
-    return 0; 
+	int i = 0;
+	if((cmdFile[0] == '/' || cmdFile[0] == '.') && access(cmdFile, F_OK) == 0){ //å‘½ä»¤åœ¨å½“å‰ç›®å½•
+		strcpy(cmdBuff, cmdFile);
+		return 1;
+	}else{  //æŸ¥æ‰¾ysh.confæ–‡ä»¶ä¸­æŒ‡å®šçš„ç›®å½•ï¼Œç¡®å®šå‘½ä»¤æ˜¯å¦å­˜åœ¨
+		while(envPath[i] != NULL){ //æŸ¥æ‰¾è·¯å¾„å·²åœ¨åˆå§‹åŒ–æ—¶è®¾ç½®åœ¨envPath[i]ä¸­
+			strcpy(cmdBuff, envPath[i]);
+			strcat(cmdBuff, cmdFile);
+
+			if(access(cmdBuff, F_OK) == 0){ //å‘½ä»¤æ–‡ä»¶è¢«æ‰¾åˆ°
+				return 1;
+			}
+
+			i++;
+		}
+	}
+
+	return 0; 
 }
 
-/*½«×Ö·û´®×ª»»ÎªÕûĞÍµÄPid*/
+/*å°†å­—ç¬¦ä¸²è½¬æ¢ä¸ºæ•´å‹çš„Pid*/
 int str2Pid(char *str, int start, int end){
-    int i, j;
-    char chs[20];
-    
-    for(i = start, j= 0; i < end; i++, j++){
-        if(str[i] < '0' || str[i] > '9'){
-            return -1;
-        }else{
-            chs[j] = str[i];
-        }
-    }
-    chs[j] = '\0';
-    
-    return atoi(chs);
+	int i, j;
+	char chs[20];
+
+	for(i = start, j= 0; i < end; i++, j++){
+		if(str[i] < '0' || str[i] > '9'){
+			return -1;
+		}else{
+			chs[j] = str[i];
+		}
+	}
+	chs[j] = '\0';
+
+	return atoi(chs);
 }
 
-/*µ÷Õû²¿·ÖÍâ²¿ÃüÁîµÄ¸ñÊ½*/
+/*è°ƒæ•´éƒ¨åˆ†å¤–éƒ¨å‘½ä»¤çš„æ ¼å¼*/
 void justArgs(char *str){
-    int i, j, len;
-    len = strlen(str);
-    
-    for(i = 0, j = -1; i < len; i++){
-        if(str[i] == '/'){
-            j = i;
-        }
-    }
+	int i, j, len;
+	len = strlen(str);
 
-    if(j != -1){ //ÕÒµ½·ûºÅ'/'
-        for(i = 0, j++; j < len; i++, j++){
-            str[i] = str[j];
-        }
-        str[i] = '\0';
-    }
+	for(i = 0, j = -1; i < len; i++){
+		if(str[i] == '/'){
+			j = i;
+		}
+	}
+
+	if(j != -1){ //æ‰¾åˆ°ç¬¦å·'/'
+		for(i = 0, j++; j < len; i++, j++){
+			str[i] = str[j];
+		}
+		str[i] = '\0';
+	}
 }
 
-/*ÉèÖÃgoon*/
+/*è®¾ç½®goon*/
 void setGoon(){
-    goon = 1;
+	goon = 1;
 }
 
-/*ÊÍ·Å»·¾³±äÁ¿¿Õ¼ä*/
+void setGoonF(){
+	goonF = 1;
+}
+
+/*é‡Šæ”¾ç¯å¢ƒå˜é‡ç©ºé—´*/
 void release(){
-    int i;
-    for(i = 0; strlen(envPath[i]) > 0; i++){
-        free(envPath[i]);
-    }
+	int i;
+	for(i = 0; strlen(envPath[i]) > 0; i++){
+		free(envPath[i]);
+	}
 }
 
 /*******************************************************
-                  ĞÅºÅÒÔ¼°jobsÏà¹Ø
-********************************************************/
-/*Ìí¼ÓĞÂµÄ×÷Òµ*/
+  ä¿¡å·ä»¥åŠjobsç›¸å…³
+ ********************************************************/
+/*æ·»åŠ æ–°çš„ä½œä¸š*/
 Job* addJob(pid_t pid){
-    Job *now = NULL, *last = NULL, *job = (Job*)malloc(sizeof(Job));
-    
-	//³õÊ¼»¯ĞÂµÄjob
-    job->pid = pid;
-    strcpy(job->cmd, inputBuff);
-    strcpy(job->state, RUNNING);
-    job->next = NULL;
-    
-    if(head == NULL){ //ÈôÊÇµÚÒ»¸öjob£¬ÔòÉèÖÃÎªÍ·Ö¸Õë
-        head = job;
-    }else{ //·ñÔò£¬¸ù¾İpid½«ĞÂµÄjob²åÈëµ½Á´±íµÄºÏÊÊÎ»ÖÃ
+	Job *now = NULL, *last = NULL, *job = (Job*)malloc(sizeof(Job));
+
+	//åˆå§‹åŒ–æ–°çš„job
+	job->pid = pid;
+	strcpy(job->cmd, inputBuff);
+	strcpy(job->state, RUNNING);
+	job->next = NULL;
+
+	if(head == NULL){ //è‹¥æ˜¯ç¬¬ä¸€ä¸ªjobï¼Œåˆ™è®¾ç½®ä¸ºå¤´æŒ‡é’ˆ
+		head = job;
+	}else{ //å¦åˆ™ï¼Œæ ¹æ®pidå°†æ–°çš„jobæ’å…¥åˆ°é“¾è¡¨çš„åˆé€‚ä½ç½®
 		now = head;
 		while(now != NULL && now->pid < pid){
 			last = now;
 			now = now->next;
 		}
-        last->next = job;
-        job->next = now;
-    }
-    
-    return job;
+		last->next = job;
+		job->next = now;
+	}
+
+	return job;
 }
 
-/*ÒÆ³ıÒ»¸ö×÷Òµ*/
+/*ç§»é™¤ä¸€ä¸ªä½œä¸š*/
 void rmJob(int sig, siginfo_t *sip, void* noused){
-    pid_t pid;
-    Job *now = NULL, *last = NULL;
-    
-    if(ingnore == 1){
-        ingnore = 0;
-        return;
-    }
-    
-    pid = sip->si_pid;
+	pid_t pid;
+	Job *now = NULL, *last = NULL;
 
-    now = head;
+	if(ingnore == 1){
+		ingnore = 0;
+		return;
+	}
+
+	pid = sip->si_pid;
+
+	now = head;
 	while(now != NULL && now->pid < pid){
 		last = now;
 		now = now->next;
 	}
-    
-    if(now == NULL){ //×÷Òµ²»´æÔÚ£¬Ôò²»½øĞĞ´¦ÀíÖ±½Ó·µ»Ø
-        return;
-    }
-    
-	//¿ªÊ¼ÒÆ³ı¸Ã×÷Òµ
-    if(now == head){
-        head = now->next;
-    }else{
-        last->next = now->next;
-    }
-    
-    free(now);
+
+	if(now == NULL){ //ä½œä¸šä¸å­˜åœ¨ï¼Œåˆ™ä¸è¿›è¡Œå¤„ç†ç›´æ¥è¿”å›
+		return;
+	}
+
+	//å¼€å§‹ç§»é™¤è¯¥ä½œä¸š
+	if(now == head){
+		head = now->next;
+	}else{
+		last->next = now->next;
+	}
+
+	free(now);
 }
 
-/*×éºÏ¼üÃüÁîctrl+z*/
+/*ç»„åˆé”®å‘½ä»¤ctrl+z*/
 void ctrl_Z(){
-    Job *now = NULL;
-    
-    if(fgPid == 0){ //Ç°Ì¨Ã»ÓĞ×÷ÒµÔòÖ±½Ó·µ»Ø
-        return;
-    }
-    
-    //SIGCHLDĞÅºÅ²úÉú×Ôctrl+z
-    ingnore = 1;
-    
+	Job *now = NULL;
+
+	if(fgPid == 0){ //å‰å°æ²¡æœ‰ä½œä¸šåˆ™ç›´æ¥è¿”å›
+		return;
+	}
+
+	//SIGCHLDä¿¡å·äº§ç”Ÿè‡ªctrl+z
+	ingnore = 1;
+
 	now = head;
 	while(now != NULL && now->pid != fgPid)
 		now = now->next;
-    
-    if(now == NULL){ //Î´ÕÒµ½Ç°Ì¨×÷Òµ£¬Ôò¸ù¾İfgPidÌí¼ÓÇ°Ì¨×÷Òµ
-        now = addJob(fgPid);
-    }
-    
-	//ĞŞ¸ÄÇ°Ì¨×÷ÒµµÄ×´Ì¬¼°ÏàÓ¦µÄÃüÁî¸ñÊ½£¬²¢´òÓ¡ÌáÊ¾ĞÅÏ¢
-    strcpy(now->state, STOPPED); 
-    now->cmd[strlen(now->cmd)] = '&';
-    now->cmd[strlen(now->cmd) + 1] = '\0';
-    printf("[%d]\t%s\t\t%s\n", now->pid, now->state, now->cmd);
-    
-	//·¢ËÍSIGSTOPĞÅºÅ¸øÕıÔÚÇ°Ì¨ÔË×÷µÄ¹¤×÷£¬½«ÆäÍ£Ö¹
-    kill(fgPid, SIGSTOP);
-    fgPid = 0;
+
+	if(now == NULL){ //æœªæ‰¾åˆ°å‰å°ä½œä¸šï¼Œåˆ™æ ¹æ®fgPidæ·»åŠ å‰å°ä½œä¸š
+		now = addJob(fgPid);
+	}
+
+	//ä¿®æ”¹å‰å°ä½œä¸šçš„çŠ¶æ€åŠç›¸åº”çš„å‘½ä»¤æ ¼å¼ï¼Œå¹¶æ‰“å°æç¤ºä¿¡æ¯
+	strcpy(now->state, STOPPED); 
+	now->cmd[strlen(now->cmd)] = '&';
+	now->cmd[strlen(now->cmd) + 1] = '\0';
+	printf("[%d]\t%s\t\t%s\n", now->pid, now->state, now->cmd);
+
+	//å‘é€SIGSTOPä¿¡å·ç»™æ­£åœ¨å‰å°è¿ä½œçš„å·¥ä½œï¼Œå°†å…¶åœæ­¢
+	kill(fgPid, SIGSTOP);
+	fgPid = 0;
 }
 
-/*fgÃüÁî*/
+/*fgå‘½ä»¤*/
 void fg_exec(int pid){    
-    Job *now = NULL; 
+	Job *now = NULL; 
 	int i;
-    
-    //SIGCHLDĞÅºÅ²úÉú×Ô´Ëº¯Êı
-    ingnore = 1;
-    
-	//¸ù¾İpid²éÕÒ×÷Òµ
-    now = head;
+
+	//SIGCHLDä¿¡å·äº§ç”Ÿè‡ªæ­¤å‡½æ•°
+	ingnore = 1;
+
+	//æ ¹æ®pidæŸ¥æ‰¾ä½œä¸š
+	now = head;
 	while(now != NULL && now->pid != pid)
 		now = now->next;
-    
-    if(now == NULL){ //Î´ÕÒµ½×÷Òµ
-        printf("pidÎª7%d µÄ×÷Òµ²»´æÔÚ£¡\n", pid);
-        return;
-    }
 
-    //¼ÇÂ¼Ç°Ì¨×÷ÒµµÄpid£¬ĞŞ¸Ä¶ÔÓ¦×÷Òµ×´Ì¬
-    fgPid = now->pid;
-    strcpy(now->state, RUNNING);
-    
-    signal(SIGTSTP, ctrl_Z); //ÉèÖÃsignalĞÅºÅ£¬ÎªÏÂÒ»´Î°´ÏÂ×éºÏ¼üCtrl+Z×ö×¼±¸
-    i = strlen(now->cmd) - 1;
-    while(i >= 0 && now->cmd[i] != '&')
+	if(now == NULL){ //æœªæ‰¾åˆ°ä½œä¸š
+		printf("pidä¸º7%d çš„ä½œä¸šä¸å­˜åœ¨ï¼\n", pid);
+		return;
+	}
+
+	//è®°å½•å‰å°ä½œä¸šçš„pidï¼Œä¿®æ”¹å¯¹åº”ä½œä¸šçŠ¶æ€
+	fgPid = now->pid;
+	strcpy(now->state, RUNNING);
+
+	signal(SIGTSTP, ctrl_Z); //è®¾ç½®signalä¿¡å·ï¼Œä¸ºä¸‹ä¸€æ¬¡æŒ‰ä¸‹ç»„åˆé”®Ctrl+Zåšå‡†å¤‡
+	i = strlen(now->cmd) - 1;
+	while(i >= 0 && now->cmd[i] != '&')
 		i--;
-    now->cmd[i] = '\0';
-    
-    printf("%s\n", now->cmd);
-    kill(now->pid, SIGCONT); //Ïò¶ÔÏó×÷Òµ·¢ËÍSIGCONTĞÅºÅ£¬Ê¹ÆäÔËĞĞ
-    waitpid(fgPid, NULL, 0); //¸¸½ø³ÌµÈ´ıÇ°Ì¨½ø³ÌµÄÔËĞĞ
+	now->cmd[i] = '\0';
+
+	printf("%s\n", now->cmd);
+	kill(now->pid, SIGCONT); //å‘å¯¹è±¡ä½œä¸šå‘é€SIGCONTä¿¡å·ï¼Œä½¿å…¶è¿è¡Œ
+	waitpid(fgPid, NULL, 0); //çˆ¶è¿›ç¨‹ç­‰å¾…å‰å°è¿›ç¨‹çš„è¿è¡Œ
 }
 
-/*bgÃüÁî*/
+/*bgå‘½ä»¤*/
 void bg_exec(int pid){
-    Job *now = NULL;
-    
-    //SIGCHLDĞÅºÅ²úÉú×Ô´Ëº¯Êı
-    ingnore = 1;
-    
-	//¸ù¾İpid²éÕÒ×÷Òµ
+	Job *now = NULL;
+
+	//SIGCHLDä¿¡å·äº§ç”Ÿè‡ªæ­¤å‡½æ•°
+	ingnore = 1;
+
+	//æ ¹æ®pidæŸ¥æ‰¾ä½œä¸š
 	now = head;
-    while(now != NULL && now->pid != pid)
+	while(now != NULL && now->pid != pid)
 		now = now->next;
-    
-    if(now == NULL){ //Î´ÕÒµ½×÷Òµ
-        printf("pidÎª7%d µÄ×÷Òµ²»´æÔÚ£¡\n", pid);
-        return;
-    }
-    
-    strcpy(now->state, RUNNING); //ĞŞ¸Ä¶ÔÏó×÷ÒµµÄ×´Ì¬
-    printf("[%d]\t%s\t\t%s\n", now->pid, now->state, now->cmd);
-    
-    kill(now->pid, SIGCONT); //Ïò¶ÔÏó×÷Òµ·¢ËÍSIGCONTĞÅºÅ£¬Ê¹ÆäÔËĞĞ
+
+	if(now == NULL){ //æœªæ‰¾åˆ°ä½œä¸š
+		printf("pidä¸º7%d çš„ä½œä¸šä¸å­˜åœ¨ï¼\n", pid);
+		return;
+	}
+
+	strcpy(now->state, RUNNING); //ä¿®æ”¹å¯¹è±¡ä½œä¸šçš„çŠ¶æ€
+	printf("[%d]\t%s\t\t%s\n", now->pid, now->state, now->cmd);
+
+	kill(now->pid, SIGCONT); //å‘å¯¹è±¡ä½œä¸šå‘é€SIGCONTä¿¡å·ï¼Œä½¿å…¶è¿è¡Œ
 }
 
 /*******************************************************
-                    ÃüÁîÀúÊ·¼ÇÂ¼
-********************************************************/
+  å‘½ä»¤å†å²è®°å½•
+ ********************************************************/
 void addHistory(char *cmd){
-    if(history.end == -1){ //µÚÒ»´ÎÊ¹ÓÃhistoryÃüÁî
-        history.end = 0;
-        strcpy(history.cmds[history.end], cmd);
-        return;
+	if(history.end == -1){ //ç¬¬ä¸€æ¬¡ä½¿ç”¨historyå‘½ä»¤
+		history.end = 0;
+		strcpy(history.cmds[history.end], cmd);
+		return;
 	}
-    
-    history.end = (history.end + 1)%HISTORY_LEN; //endÇ°ÒÆÒ»Î»
-    strcpy(history.cmds[history.end], cmd); //½«ÃüÁî¿½±´µ½endÖ¸ÏòµÄÊı×éÖĞ
-    
-    if(history.end == history.start){ //endºÍstartÖ¸ÏòÍ¬Ò»Î»ÖÃ
-        history.start = (history.start + 1)%HISTORY_LEN; //startÇ°ÒÆÒ»Î»
-    }
+
+	history.end = (history.end + 1)%HISTORY_LEN; //endå‰ç§»ä¸€ä½
+	strcpy(history.cmds[history.end], cmd); //å°†å‘½ä»¤æ‹·è´åˆ°endæŒ‡å‘çš„æ•°ç»„ä¸­
+
+	if(history.end == history.start){ //endå’ŒstartæŒ‡å‘åŒä¸€ä½ç½®
+		history.start = (history.start + 1)%HISTORY_LEN; //startå‰ç§»ä¸€ä½
+	}
 }
 
 /*******************************************************
-                     ³õÊ¼»¯»·¾³
-********************************************************/
-/*Í¨¹ıÂ·¾¶ÎÄ¼ş»ñÈ¡»·¾³Â·¾¶*/
+  åˆå§‹åŒ–ç¯å¢ƒ
+ ********************************************************/
+/*é€šè¿‡è·¯å¾„æ–‡ä»¶è·å–ç¯å¢ƒè·¯å¾„*/
 void getEnvPath(int len, char *buf){
-    int i, j, last = 0, pathIndex = 0, temp;
-    char path[40];
-    
-    for(i = 0, j = 0; i < len; i++){
-        if(buf[i] == ':'){ //½«ÒÔÃ°ºÅ(:)·Ö¸ôµÄ²éÕÒÂ·¾¶·Ö±ğÉèÖÃµ½envPath[]ÖĞ
-            if(path[j-1] != '/'){
-                path[j++] = '/';
-            }
-            path[j] = '\0';
-            j = 0;
-            
-            temp = strlen(path);
-            envPath[pathIndex] = (char*)malloc(sizeof(char) * (temp + 1));
-            strcpy(envPath[pathIndex], path);
-            
-            pathIndex++;
-        }else{
-            path[j++] = buf[i];
-        }
-    }
-    
-    envPath[pathIndex] = NULL;
+	int i, j, last = 0, pathIndex = 0, temp;
+	char path[40];
+
+	for(i = 0, j = 0; i < len; i++){
+		if(buf[i] == ':'){ //å°†ä»¥å†’å·(:)åˆ†éš”çš„æŸ¥æ‰¾è·¯å¾„åˆ†åˆ«è®¾ç½®åˆ°envPath[]ä¸­
+			if(path[j-1] != '/'){
+				path[j++] = '/';
+			}
+			path[j] = '\0';
+			j = 0;
+
+			temp = strlen(path);
+			envPath[pathIndex] = (char*)malloc(sizeof(char) * (temp + 1));
+			strcpy(envPath[pathIndex], path);
+
+			pathIndex++;
+		}else{
+			path[j++] = buf[i];
+		}
+	}
+
+	envPath[pathIndex] = NULL;
 }
 
-/*³õÊ¼»¯²Ù×÷*/
+/*åˆå§‹åŒ–æ“ä½œ*/
 void init(){
-    int fd, n, len;
-    char c, buf[80];
+	int fd, n, len;
+	char c, buf[80];
 
-	//´ò¿ª²éÕÒÂ·¾¶ÎÄ¼şysh.conf
-    if((fd = open("ysh.conf", O_RDONLY, 660)) == -1){
-        perror("init environment failed\n");
-        exit(1);
-    }
-    
-	//³õÊ¼»¯historyÁ´±í
-    history.end = -1;
-    history.start = 0;
-    
-    len = 0;
-	//½«Â·¾¶ÎÄ¼şÄÚÈİÒÀ´Î¶ÁÈëµ½buf[]ÖĞ
-    while(read(fd, &c, 1) != 0){ 
-        buf[len++] = c;
-    }
-    buf[len] = '\0';
+	//æ‰“å¼€æŸ¥æ‰¾è·¯å¾„æ–‡ä»¶ysh.conf
+	if((fd = open("ysh.conf", O_RDONLY, 660)) == -1){
+		perror("init environment failed\n");
+		exit(1);
+	}
 
-    //½«»·¾³Â·¾¶´æÈëenvPath[]
-    getEnvPath(len, buf); 
-    
-    //×¢²áĞÅºÅ
-    struct sigaction action;
-    action.sa_sigaction = rmJob;
-    sigfillset(&action.sa_mask);
-    action.sa_flags = SA_SIGINFO;
-    sigaction(SIGCHLD, &action, NULL);
-    signal(SIGTSTP, ctrl_Z);
+	//åˆå§‹åŒ–historyé“¾è¡¨
+	history.end = -1;
+	history.start = 0;
+
+	len = 0;
+	//å°†è·¯å¾„æ–‡ä»¶å†…å®¹ä¾æ¬¡è¯»å…¥åˆ°buf[]ä¸­
+	while(read(fd, &c, 1) != 0){ 
+		buf[len++] = c;
+	}
+	buf[len] = '\0';
+
+	//å°†ç¯å¢ƒè·¯å¾„å­˜å…¥envPath[]
+	getEnvPath(len, buf); 
+
+	//æ³¨å†Œä¿¡å·
+	struct sigaction action;
+	action.sa_sigaction = rmJob;
+	sigfillset(&action.sa_mask);
+	action.sa_flags = SA_SIGINFO;
+	sigaction(SIGCHLD, &action, NULL);
+	signal(SIGTSTP, ctrl_Z);
 }
 
 /*******************************************************
-                      ÃüÁî½âÎö
-********************************************************/
+  å‘½ä»¤è§£æ
+ ********************************************************/
 SimpleCmd* handleSimpleCmdStr(int begin, int end){
-    int i, j, k;
-    int fileFinished; //¼ÇÂ¼ÃüÁîÊÇ·ñ½âÎöÍê±Ï
-    char c, buff[10][40], inputFile[30], outputFile[30], *temp = NULL;
-    SimpleCmd *cmd = (SimpleCmd*)malloc(sizeof(SimpleCmd));
-    
-	//Ä¬ÈÏÎª·ÇºóÌ¨ÃüÁî£¬ÊäÈëÊä³öÖØ¶¨ÏòÎªnull
-    cmd->isBack = 0;
-    cmd->input = cmd->output = NULL;
-    
-    //³õÊ¼»¯ÏàÓ¦±äÁ¿
-    for(i = begin; i<10; i++){
-        buff[i][0] = '\0';
-    }
-    inputFile[0] = '\0';
-    outputFile[0] = '\0';
-    
-    i = begin;
-	//Ìø¹ı¿Õ¸ñµÈÎŞÓÃĞÅÏ¢
-    while(i < end && (inputBuff[i] == ' ' || inputBuff[i] == '\t')){
-        i++;
-    }
-    
-    k = 0;
-    j = 0;
-    fileFinished = 0;
-    temp = buff[k]; //ÒÔÏÂÍ¨¹ıtempÖ¸ÕëµÄÒÆ¶¯ÊµÏÖ¶Ôbuff[i]µÄË³´Î¸³Öµ¹ı³Ì
-    while(i < end){
-		/*¸ù¾İÃüÁî×Ö·ûµÄ²»Í¬Çé¿ö½øĞĞ²»Í¬µÄ´¦Àí*/
-        switch(inputBuff[i]){ 
-            case ' ':
-            case '\t': //ÃüÁîÃû¼°²ÎÊıµÄ½áÊø±êÖ¾
-                temp[j] = '\0';
-                j = 0;
-                if(!fileFinished){
-                    k++;
-                    temp = buff[k];
-                }
-                break;
+	int i, j, k;
+	int fileFinished; //è®°å½•å‘½ä»¤æ˜¯å¦è§£æå®Œæ¯•
+	char c, buff[10][40], inputFile[30], outputFile[30], *temp = NULL;
+	SimpleCmd *cmd = (SimpleCmd*)malloc(sizeof(SimpleCmd));
 
-            case '<': //ÊäÈëÖØ¶¨Ïò±êÖ¾
-                if(j != 0){
-		    //´ËÅĞ¶ÏÎª·ÀÖ¹ÃüÁîÖ±½Ó°¤×Å<·ûºÅµ¼ÖÂÅĞ¶ÏÎªÍ¬Ò»¸ö²ÎÊı£¬Èç¹ûls<sth
-                    temp[j] = '\0';
-                    j = 0;
-                    if(!fileFinished){
-                        k++;
-                        temp = buff[k];
-                    }
-                }
-                temp = inputFile;
-                fileFinished = 1;
-                i++;
-                break;
-                
-            case '>': //Êä³öÖØ¶¨Ïò±êÖ¾
-                if(j != 0){
-                    temp[j] = '\0';
-                    j = 0;
-                    if(!fileFinished){
-                        k++;
-                        temp = buff[k];
-                    }
-                }
-                temp = outputFile;
-                fileFinished = 1;
-                i++;
-                break;
-                
-            case '&': //ºóÌ¨ÔËĞĞ±êÖ¾
-                if(j != 0){
-                    temp[j] = '\0';
-                    j = 0;
-                    if(!fileFinished){
-                        k++;
-                        temp = buff[k];
-                    }
-                }
-                cmd->isBack = 1;
-                fileFinished = 1;
-                i++;
-                break;
-                
-            default: //Ä¬ÈÏÔò¶ÁÈëµ½tempÖ¸¶¨µÄ¿Õ¼ä
-                temp[j++] = inputBuff[i++];
-                continue;
+	//é»˜è®¤ä¸ºéåå°å‘½ä»¤ï¼Œè¾“å…¥è¾“å‡ºé‡å®šå‘ä¸ºnull
+	cmd->isBack = 0;
+	cmd->input = cmd->output = NULL;
+
+	//åˆå§‹åŒ–ç›¸åº”å˜é‡
+	for(i = begin; i<10; i++){
+		buff[i][0] = '\0';
+	}
+	inputFile[0] = '\0';
+	outputFile[0] = '\0';
+
+	i = begin;
+	//è·³è¿‡ç©ºæ ¼ç­‰æ— ç”¨ä¿¡æ¯
+	while(i < end && (inputBuff[i] == ' ' || inputBuff[i] == '\t')){
+		i++;
+	}
+
+	k = 0;
+	j = 0;
+	fileFinished = 0;
+	temp = buff[k]; //ä»¥ä¸‹é€šè¿‡tempæŒ‡é’ˆçš„ç§»åŠ¨å®ç°å¯¹buff[i]çš„é¡ºæ¬¡èµ‹å€¼è¿‡ç¨‹
+	while(i < end){
+		/*æ ¹æ®å‘½ä»¤å­—ç¬¦çš„ä¸åŒæƒ…å†µè¿›è¡Œä¸åŒçš„å¤„ç†*/
+		switch(inputBuff[i]){ 
+			case ' ':
+			case '\t': //å‘½ä»¤ååŠå‚æ•°çš„ç»“æŸæ ‡å¿—
+				temp[j] = '\0';
+				j = 0;
+				if(!fileFinished){
+					k++;
+					temp = buff[k];
+				}
+				break;
+
+			case '<': //è¾“å…¥é‡å®šå‘æ ‡å¿—
+				if(j != 0){
+					//æ­¤åˆ¤æ–­ä¸ºé˜²æ­¢å‘½ä»¤ç›´æ¥æŒ¨ç€<ç¬¦å·å¯¼è‡´åˆ¤æ–­ä¸ºåŒä¸€ä¸ªå‚æ•°ï¼Œå¦‚æœls<sth
+					temp[j] = '\0';
+					j = 0;
+					if(!fileFinished){
+						k++;
+						temp = buff[k];
+					}
+				}
+				temp = inputFile;
+				fileFinished = 1;
+				i++;
+				break;
+
+			case '>': //è¾“å‡ºé‡å®šå‘æ ‡å¿—
+				if(j != 0){
+					temp[j] = '\0';
+					j = 0;
+					if(!fileFinished){
+						k++;
+						temp = buff[k];
+					}
+				}
+				temp = outputFile;
+				fileFinished = 1;
+				i++;
+				break;
+
+			case '&': //åå°è¿è¡Œæ ‡å¿—
+				if(j != 0){
+					temp[j] = '\0';
+					j = 0;
+					if(!fileFinished){
+						k++;
+						temp = buff[k];
+					}
+				}
+				cmd->isBack = 1;
+				fileFinished = 1;
+				i++;
+				break;
+
+			default: //é»˜è®¤åˆ™è¯»å…¥åˆ°tempæŒ‡å®šçš„ç©ºé—´
+				temp[j++] = inputBuff[i++];
+				continue;
 		}
-        
-		//Ìø¹ı¿Õ¸ñµÈÎŞÓÃĞÅÏ¢
-        while(i < end && (inputBuff[i] == ' ' || inputBuff[i] == '\t')){
-            i++;
-        }
-	}
-    
-    if(inputBuff[end-1] != ' ' && inputBuff[end-1] != '\t' && inputBuff[end-1] != '&'){
-        temp[j] = '\0';
-        if(!fileFinished){
-            k++;
-        }
-    }
-    
-	//ÒÀ´ÎÎªÃüÁîÃû¼°Æä¸÷¸ö²ÎÊı¸³Öµ
-    cmd->args = (char**)malloc(sizeof(char*) * (k + 1));
-    cmd->args[k] = NULL;
-    for(i = 0; i<k; i++){
-        j = strlen(buff[i]);
-        cmd->args[i] = (char*)malloc(sizeof(char) * (j + 1));   
-        strcpy(cmd->args[i], buff[i]);
-    }
-    
-	//Èç¹ûÓĞÊäÈëÖØ¶¨ÏòÎÄ¼ş£¬ÔòÎªÃüÁîµÄÊäÈëÖØ¶¨Ïò±äÁ¿¸³Öµ
-    if(strlen(inputFile) != 0){
-        j = strlen(inputFile);
-        cmd->input = (char*)malloc(sizeof(char) * (j + 1));
-        strcpy(cmd->input, inputFile);
-    }
 
-    //Èç¹ûÓĞÊä³öÖØ¶¨ÏòÎÄ¼ş£¬ÔòÎªÃüÁîµÄÊä³öÖØ¶¨Ïò±äÁ¿¸³Öµ
-    if(strlen(outputFile) != 0){
-        j = strlen(outputFile);
-        cmd->output = (char*)malloc(sizeof(char) * (j + 1));   
-        strcpy(cmd->output, outputFile);
-    }
-    #ifdef DEBUG
-    printf("****\n");
-    printf("isBack: %d\n",cmd->isBack);
-    	for(i = 0; cmd->args[i] != NULL; i++){
-    		printf("args[%d]: %s\n",i,cmd->args[i]);
+		//è·³è¿‡ç©ºæ ¼ç­‰æ— ç”¨ä¿¡æ¯
+		while(i < end && (inputBuff[i] == ' ' || inputBuff[i] == '\t')){
+			i++;
+		}
 	}
-    printf("input: %s\n",cmd->input);
-    printf("output: %s\n",cmd->output);
-    printf("****\n");
-    #endif
-    return cmd;
+
+	if(inputBuff[end-1] != ' ' && inputBuff[end-1] != '\t' && inputBuff[end-1] != '&'){
+		temp[j] = '\0';
+		if(!fileFinished){
+			k++;
+		}
+	}
+
+	//ä¾æ¬¡ä¸ºå‘½ä»¤ååŠå…¶å„ä¸ªå‚æ•°èµ‹å€¼
+	cmd->args = (char**)malloc(sizeof(char*) * (k + 1));
+	cmd->args[k] = NULL;
+	for(i = 0; i<k; i++){
+		j = strlen(buff[i]);
+		cmd->args[i] = (char*)malloc(sizeof(char) * (j + 1));   
+		strcpy(cmd->args[i], buff[i]);
+	}
+
+	//å¦‚æœæœ‰è¾“å…¥é‡å®šå‘æ–‡ä»¶ï¼Œåˆ™ä¸ºå‘½ä»¤çš„è¾“å…¥é‡å®šå‘å˜é‡èµ‹å€¼
+	if(strlen(inputFile) != 0){
+		j = strlen(inputFile);
+		cmd->input = (char*)malloc(sizeof(char) * (j + 1));
+		strcpy(cmd->input, inputFile);
+	}
+
+	//å¦‚æœæœ‰è¾“å‡ºé‡å®šå‘æ–‡ä»¶ï¼Œåˆ™ä¸ºå‘½ä»¤çš„è¾“å‡ºé‡å®šå‘å˜é‡èµ‹å€¼
+	if(strlen(outputFile) != 0){
+		j = strlen(outputFile);
+		cmd->output = (char*)malloc(sizeof(char) * (j + 1));   
+		strcpy(cmd->output, outputFile);
+	}
+#ifdef DEBUG
+	printf("****\n");
+	printf("isBack: %d\n",cmd->isBack);
+	for(i = 0; cmd->args[i] != NULL; i++){
+		printf("args[%d]: %s\n",i,cmd->args[i]);
+	}
+	printf("input: %s\n",cmd->input);
+	printf("output: %s\n",cmd->output);
+	printf("****\n");
+#endif
+	return cmd;
 }
 
 /*******************************************************
-                      ÃüÁîÖ´ĞĞ
-********************************************************/
-/*Ö´ĞĞÍâ²¿ÃüÁî*/
+  å‘½ä»¤æ‰§è¡Œ
+ ********************************************************/
+/*æ‰§è¡Œå¤–éƒ¨å‘½ä»¤*/
 void execOuterCmd(SimpleCmd *cmd){
-    pid_t pid;
-    int pipeIn, pipeOut;
-    
-    if(exists(cmd->args[0])){ //ÃüÁî´æÔÚ
+	pid_t pid;
+	int pipeIn, pipeOut;
 
-        if((pid = fork()) < 0){
-            perror("fork failed");
-            return;
-        }
-        
-        if(pid == 0){ //×Ó½ø³Ì
-            if(cmd->input != NULL){ //´æÔÚÊäÈëÖØ¶¨Ïò
-                if((pipeIn = open(cmd->input, O_RDONLY, S_IRUSR|S_IWUSR)) == -1){
-                    printf("²»ÄÜ´ò¿ªÎÄ¼ş %s£¡\n", cmd->input);
-                    return;
-                }
-                if(dup2(pipeIn, 0) == -1){
-                    printf("ÖØ¶¨Ïò±ê×¼ÊäÈë´íÎó£¡\n");
-                    return;
-                }
-            }
-            
-            if(cmd->output != NULL){ //´æÔÚÊä³öÖØ¶¨Ïò
-                if((pipeOut = open(cmd->output, O_WRONLY|O_CREAT|O_TRUNC, S_IRUSR|S_IWUSR)) == -1){
-                    printf("²»ÄÜ´ò¿ªÎÄ¼ş %s£¡\n", cmd->output);
-                    return ;
-                }
-                if(dup2(pipeOut, 1) == -1){
-                    printf("ÖØ¶¨Ïò±ê×¼Êä³ö´íÎó£¡\n");
-                    return;
-                }
-            }
-            
-            if(cmd->isBack){ //ÈôÊÇºóÌ¨ÔËĞĞÃüÁî£¬µÈ´ı¸¸½ø³ÌÔö¼Ó×÷Òµ
-                signal(SIGUSR1, setGoon); //ÊÕµ½ĞÅºÅ£¬setGoonº¯Êı½«goonÖÃ1£¬ÒÔÌø³öÏÂÃæµÄÑ­»·
-                while(goon == 0) ; //µÈ´ı¸¸½ø³ÌSIGUSR1ĞÅºÅ£¬±íÊ¾×÷ÒµÒÑ¼Óµ½Á´±íÖĞ
-                goon = 0; //ÖÃ0£¬ÎªÏÂÒ»ÃüÁî×ö×¼±¸
-                
-                printf("[%d]\t%s\t\t%s\n", getpid(), RUNNING, inputBuff);
-                kill(getppid(), SIGUSR1);
-            }
-            
-            justArgs(cmd->args[0]);
-            if(execv(cmdBuff, cmd->args) < 0){ //Ö´ĞĞÃüÁî
-                printf("execv failed!\n");
-                return;
-            }
-        }
-		else{ //¸¸½ø³Ì
-            if(cmd ->isBack){ //ºóÌ¨ÃüÁî             
-                fgPid = 0; //pidÖÃ0£¬ÎªÏÂÒ»ÃüÁî×ö×¼±¸
-                addJob(pid); //Ôö¼ÓĞÂµÄ×÷Òµ
-                kill(pid, SIGUSR1); //×Ó½ø³Ì·¢ĞÅºÅ£¬±íÊ¾×÷ÒµÒÑ¼ÓÈë
-                
-                //µÈ´ı×Ó½ø³ÌÊä³ö
-                signal(SIGUSR1, setGoon);
-                while(goon == 0) ;
-                goon = 0;
-            }else{ //·ÇºóÌ¨ÃüÁî
-                fgPid = pid;
-                waitpid(pid, NULL, 0);
-            }
+	if(exists(cmd->args[0])){ //å‘½ä»¤å­˜åœ¨
+
+		if((pid = fork()) < 0){
+			perror("fork failed");
+			return;
 		}
-    }else{ //ÃüÁî²»´æÔÚ
-        printf("ÕÒ²»µ½ÃüÁî 15%s\n", inputBuff);
-    }
+
+		if(pid == 0){ //å­è¿›ç¨‹
+			if(cmd->input != NULL){ //å­˜åœ¨è¾“å…¥é‡å®šå‘
+				if((pipeIn = open(cmd->input, O_RDONLY, S_IRUSR|S_IWUSR)) == -1){
+					printf("ä¸èƒ½æ‰“å¼€æ–‡ä»¶ %sï¼\n", cmd->input);
+					return;
+				}
+				if(dup2(pipeIn, 0) == -1){
+					printf("é‡å®šå‘æ ‡å‡†è¾“å…¥é”™è¯¯ï¼\n");
+					return;
+				}
+			}
+
+			if(cmd->output != NULL){ //å­˜åœ¨è¾“å‡ºé‡å®šå‘
+				if((pipeOut = open(cmd->output, O_WRONLY|O_CREAT|O_TRUNC, S_IRUSR|S_IWUSR)) == -1){
+					printf("ä¸èƒ½æ‰“å¼€æ–‡ä»¶ %sï¼\n", cmd->output);
+					return ;
+				}
+				if(dup2(pipeOut, 1) == -1){
+					printf("é‡å®šå‘æ ‡å‡†è¾“å‡ºé”™è¯¯ï¼\n");
+					return;
+				}
+			}
+
+			if(cmd->isBack){ //è‹¥æ˜¯åå°è¿è¡Œå‘½ä»¤ï¼Œç­‰å¾…çˆ¶è¿›ç¨‹å¢åŠ ä½œä¸š
+				signal(SIGUSR1, setGoon); //æ”¶åˆ°ä¿¡å·ï¼ŒsetGoonå‡½æ•°å°†goonç½®1ï¼Œä»¥è·³å‡ºä¸‹é¢çš„å¾ªç¯
+				kill(getppid(), SIGUSR2);
+				while(goon == 0) { //ç­‰å¾…çˆ¶è¿›ç¨‹SIGUSR1ä¿¡å·ï¼Œè¡¨ç¤ºä½œä¸šå·²åŠ åˆ°é“¾è¡¨ä¸­
+					sleep(1);
+					printf("Debug:wait for father sig\n");	
+				}
+				goon = 0; //ç½®0ï¼Œä¸ºä¸‹ä¸€å‘½ä»¤åšå‡†å¤‡
+
+				printf("[%d]\t%s\t\t%s\n", getpid(), RUNNING, inputBuff);
+				kill(getppid(), SIGUSR1);
+				printf("Debug:send sig to father\n");
+			}
+
+			justArgs(cmd->args[0]);
+			if(execv(cmdBuff, cmd->args) < 0){ //æ‰§è¡Œå‘½ä»¤
+				printf("execv failed!\n");
+				return;
+			}
+		}
+		else{ //çˆ¶è¿›ç¨‹
+			if(cmd ->isBack){ //åå°å‘½ä»¤             
+				fgPid = 0; //pidç½®0ï¼Œä¸ºä¸‹ä¸€å‘½ä»¤åšå‡†å¤‡
+				addJob(pid); //å¢åŠ æ–°çš„ä½œä¸š
+				signal(SIGUSR2, setGoonF);
+				while(goonF == 0);
+				printf("%d\n", kill(pid, SIGUSR1)); //å­è¿›ç¨‹å‘ä¿¡å·ï¼Œè¡¨ç¤ºä½œä¸šå·²åŠ å…¥
+				printf("Debug:send sig to child\n");
+				//ç­‰å¾…å­è¿›ç¨‹è¾“å‡º
+				signal(SIGUSR1, setGoon);
+				while(goon == 0) {
+					sleep(1);
+					printf("Debug:wait for child sig\n");
+				}
+				goon = 0;
+				goonF = 0;
+			}else{ //éåå°å‘½ä»¤
+				fgPid = pid;
+				waitpid(pid, NULL, 0);
+			}
+		}
+	}else{ //å‘½ä»¤ä¸å­˜åœ¨
+		printf("æ‰¾ä¸åˆ°å‘½ä»¤ 15%s\n", inputBuff);
+	}
 }
 
-/*Ö´ĞĞÃüÁî*/
+/*æ‰§è¡Œå‘½ä»¤*/
 void execSimpleCmd(SimpleCmd *cmd){
-    int i, pid;
-    char *temp;
-    Job *now = NULL;
-    
-    if(strcmp(cmd->args[0], "exit") == 0) { //exitÃüÁî
-        exit(0);
-    } else if (strcmp(cmd->args[0], "history") == 0) { //historyÃüÁî
-        if(history.end == -1){
-            printf("ÉĞÎ´Ö´ĞĞÈÎºÎÃüÁî\n");
-            return;
-        }
-        i = history.start;
-        do {
-            printf("%s\n", history.cmds[i]);
-            i = (i + 1)%HISTORY_LEN;
-        } while(i != (history.end + 1)%HISTORY_LEN);
-    } else if (strcmp(cmd->args[0], "jobs") == 0) { //jobsÃüÁî
-        if(head == NULL){
-            printf("ÉĞÎŞÈÎºÎ×÷Òµ\n");
-        } else {
-            printf("index\tpid\tstate\t\tcommand\n");
-            for(i = 1, now = head; now != NULL; now = now->next, i++){
-                printf("%d\t%d\t%s\t\t%s\n", i, now->pid, now->state, now->cmd);
-            }
-        }
-    } else if (strcmp(cmd->args[0], "cd") == 0) { //cdÃüÁî
-        temp = cmd->args[1];
-        if(temp != NULL){
-            if(chdir(temp) < 0){
-                printf("cd; %s ´íÎóµÄÎÄ¼şÃû»òÎÄ¼ş¼ĞÃû£¡\n", temp);
-            }
-        }
-    } else if (strcmp(cmd->args[0], "fg") == 0) { //fgÃüÁî
-        temp = cmd->args[1];
-        if(temp != NULL && temp[0] == '%'){
-            pid = str2Pid(temp, 1, strlen(temp));
-            if(pid != -1){
-                fg_exec(pid);
-            }
-        }else{
-            printf("fg; ²ÎÊı²»ºÏ·¨£¬ÕıÈ·¸ñÊ½Îª£ºfg %<int>\n");
-        }
-    } else if (strcmp(cmd->args[0], "bg") == 0) { //bgÃüÁî
-        temp = cmd->args[1];
-        if(temp != NULL && temp[0] == '%'){
-            pid = str2Pid(temp, 1, strlen(temp));
-            
-            if(pid != -1){
-                bg_exec(pid);
-            }
-        }
+	int i, pid;
+	char *temp;
+	Job *now = NULL;
+
+	if(strcmp(cmd->args[0], "exit") == 0) { //exitå‘½ä»¤
+		exit(0);
+	} else if (strcmp(cmd->args[0], "history") == 0) { //historyå‘½ä»¤
+		if(history.end == -1){
+			printf("å°šæœªæ‰§è¡Œä»»ä½•å‘½ä»¤\n");
+			return;
+		}
+		i = history.start;
+		do {
+			printf("%s\n", history.cmds[i]);
+			i = (i + 1)%HISTORY_LEN;
+		} while(i != (history.end + 1)%HISTORY_LEN);
+	} else if (strcmp(cmd->args[0], "jobs") == 0) { //jobså‘½ä»¤
+		if(head == NULL){
+			printf("å°šæ— ä»»ä½•ä½œä¸š\n");
+		} else {
+			printf("index\tpid\tstate\t\tcommand\n");
+			for(i = 1, now = head; now != NULL; now = now->next, i++){
+				printf("%d\t%d\t%s\t\t%s\n", i, now->pid, now->state, now->cmd);
+			}
+		}
+	} else if (strcmp(cmd->args[0], "cd") == 0) { //cdå‘½ä»¤
+		temp = cmd->args[1];
+		if(temp != NULL){
+			if(chdir(temp) < 0){
+				printf("cd; %s é”™è¯¯çš„æ–‡ä»¶åæˆ–æ–‡ä»¶å¤¹åï¼\n", temp);
+			}
+		}
+	} else if (strcmp(cmd->args[0], "fg") == 0) { //fgå‘½ä»¤
+		temp = cmd->args[1];
+		if(temp != NULL && temp[0] == '%'){
+			pid = str2Pid(temp, 1, strlen(temp));
+			if(pid != -1){
+				fg_exec(pid);
+			}
+		}else{
+			printf("fg; å‚æ•°ä¸åˆæ³•ï¼Œæ­£ç¡®æ ¼å¼ä¸ºï¼šfg %<int>\n");
+		}
+	} else if (strcmp(cmd->args[0], "bg") == 0) { //bgå‘½ä»¤
+		temp = cmd->args[1];
+		if(temp != NULL && temp[0] == '%'){
+			pid = str2Pid(temp, 1, strlen(temp));
+
+			if(pid != -1){
+				bg_exec(pid);
+			}
+		}
 		else{
-            printf("bg; ²ÎÊı²»ºÏ·¨£¬ÕıÈ·¸ñÊ½Îª£ºbg %<int>\n");
-        }
-    } else{ //Íâ²¿ÃüÁî
-        execOuterCmd(cmd);
-    }
-    
-    //ÊÍ·Å½á¹¹Ìå¿Õ¼ä
-    for(i = 0; cmd->args[i] != NULL; i++){
-        free(cmd->args[i]);
-        free(cmd->input);
-        free(cmd->output);
-    }
+			printf("bg; å‚æ•°ä¸åˆæ³•ï¼Œæ­£ç¡®æ ¼å¼ä¸ºï¼šbg %<int>\n");
+		}
+	} else{ //å¤–éƒ¨å‘½ä»¤
+		execOuterCmd(cmd);
+	}
+
+	//é‡Šæ”¾ç»“æ„ä½“ç©ºé—´
+	for(i = 0; cmd->args[i] != NULL; i++){
+		free(cmd->args[i]);
+		free(cmd->input);
+		free(cmd->output);
+	}
 }
 
 /*******************************************************
-                     ÃüÁîÖ´ĞĞ½Ó¿Ú
-********************************************************/
+  å‘½ä»¤æ‰§è¡Œæ¥å£
+ ********************************************************/
 void execute(){
-    SimpleCmd *cmd = handleSimpleCmdStr(0, strlen(inputBuff));
-    execSimpleCmd(cmd);
+	SimpleCmd *cmd = handleSimpleCmdStr(0, strlen(inputBuff));
+	execSimpleCmd(cmd);
 }
