@@ -503,17 +503,8 @@ void execOuterCmd(SimpleCmd *cmd){
 			}
 
 			if(cmd->isBack){ //若是后台运行命令，等待父进程增加作业
-				signal(SIGUSR1, setGoon); //收到信号，setGoon函数将goon置1，以跳出下面的循环
-				kill(getppid(), SIGUSR2);
-				while(goon == 0) { //等待父进程SIGUSR1信号，表示作业已加到链表中
-					sleep(1);
-					printf("Debug:wait for father sig\n");	
-				}
-				goon = 0; //置0，为下一命令做准备
-
 				printf("[%d]\t%s\t\t%s\n", getpid(), RUNNING, inputBuff);
 				kill(getppid(), SIGUSR1);
-				printf("Debug:send sig to father\n");
 			}
 
 			justArgs(cmd->args[0]);
@@ -524,20 +515,12 @@ void execOuterCmd(SimpleCmd *cmd){
 		}
 		else{ //父进程
 			if(cmd ->isBack){ //后台命令            
-				signal(SIGUSR2, setGoonF);
-				while(goonF == 0); 
 				fgPid = 0; //pid置0，为下一命令做准备
 				addJob(pid); //增加新的作业
-				kill(pid, SIGUSR1); //子进程发信号，表示作业已加入
-				printf("Debug:send sig to child\n");
 				//等待子进程输出
 				signal(SIGUSR1, setGoon);
-				while(goon == 0) {
-					sleep(1);
-					printf("Debug:wait for child sig\n");
-				}
+				while(goon == 0);
 				goon = 0;
-				goonF = 0;
 			}else{ //非后台命令
 				fgPid = pid;
 				waitpid(pid, NULL, 0);
