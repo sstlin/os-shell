@@ -218,6 +218,7 @@ void fg_exec(int pid){
 
 	printf("%s\n", now->cmd);
 	kill(now->pid, SIGCONT); //向对象作业发送SIGCONT信号，使其运行
+	sleep(1);
 	waitpid(fgPid, NULL, 0); //父进程等待前台进程的运行
 }
 
@@ -471,7 +472,7 @@ SimpleCmd* handleSimpleCmdStr(int begin, int end){
 void execOuterCmd(SimpleCmd *cmd){
 	pid_t pid;
 	int pipeIn, pipeOut;
-
+	
 	if(exists(cmd->args[0])){ //命令存在
 
 		if((pid = fork()) < 0){
