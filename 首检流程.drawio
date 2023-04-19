@@ -1,9 +1,42 @@
-<mxfile host="app.diagrams.net" modified="2023-04-19T09:42:07.390Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" version="21.1.9" etag="F-RRZqMx6EGxm8PWiH7L" type="github">
+<mxfile host="app.diagrams.net" modified="2023-04-19T09:44:26.603Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="dPdzjSwTMx12jqxxiZms" version="21.1.9" type="github">
   <diagram name="第 1 页" id="YWGKBsJNkr_up17E1PWP">
-    <mxGraphModel>
+    <mxGraphModel dx="446" dy="431" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="_QUgjFNA1RRUstnNKURD-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-1" target="_QUgjFNA1RRUstnNKURD-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-1" value="MC:选择生产任务.点击开始" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="110" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-2" target="_QUgjFNA1RRUstnNKURD-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-2" value="MC:开始MRO匹配" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="170" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-4" target="_QUgjFNA1RRUstnNKURD-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-4" value="MC:完成MRO匹配" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="170" y="390" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-6" target="_QUgjFNA1RRUstnNKURD-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-6" value="&lt;div&gt;MC:开始工艺参数&lt;/div&gt;&lt;div&gt;匹配&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="170" y="530" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-8" target="_QUgjFNA1RRUstnNKURD-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-8" value="&lt;div&gt;MC:完成工艺参数&lt;/div&gt;&lt;div&gt;匹配&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="170" y="670" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-10" value="生成首检工单(首检)" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="170" y="810" width="120" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
