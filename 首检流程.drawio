@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-04-19T09:44:26.603Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="dPdzjSwTMx12jqxxiZms" version="21.1.9" type="github">
+<mxfile host="app.diagrams.net" modified="2023-04-19T10:55:11.963Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="rAnH8vJoIViumNB5_bVO" version="21.1.9" type="github">
   <diagram name="第 1 页" id="YWGKBsJNkr_up17E1PWP">
-    <mxGraphModel dx="446" dy="431" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1816" dy="527" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -34,8 +34,57 @@
         <mxCell id="_QUgjFNA1RRUstnNKURD-8" value="&lt;div&gt;MC:完成工艺参数&lt;/div&gt;&lt;div&gt;匹配&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="170" y="670" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-10" target="_QUgjFNA1RRUstnNKURD-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="_QUgjFNA1RRUstnNKURD-10" value="生成首检工单(首检)" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="170" y="810" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-15" target="_QUgjFNA1RRUstnNKURD-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-27" value="是" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="_QUgjFNA1RRUstnNKURD-26">
+          <mxGeometry x="-0.2619" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-15" target="_QUgjFNA1RRUstnNKURD-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-30" value="否" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="_QUgjFNA1RRUstnNKURD-29">
+          <mxGeometry x="-0.1889" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-15" value="是否首检强控" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="170" y="940" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-17" target="_QUgjFNA1RRUstnNKURD-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-17" value="产品定义-首检强控" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-60" y="810" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-18" target="_QUgjFNA1RRUstnNKURD-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-18" value="生产任务-生产的目标产品(定义)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-60" y="670" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-19" target="_QUgjFNA1RRUstnNKURD-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-19" target="_QUgjFNA1RRUstnNKURD-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-19" value="排产:生产任务(修改)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-24" value="MC:开始首检任务" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="950" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_QUgjFNA1RRUstnNKURD-25" value="真正开启生产加工" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="170" y="1080" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
