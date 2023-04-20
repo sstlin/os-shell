@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-04-20T05:07:42.677Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="2-QBRIiNXMGN0zqeGPxx" version="21.1.9" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2023-04-20T06:31:56.171Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="gPXL6vYAVV7sHE9I4ICA" version="21.1.9" type="github" pages="3">
   <diagram name="首检" id="YWGKBsJNkr_up17E1PWP">
     <mxGraphModel dx="2131" dy="644" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -118,8 +118,15 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="_QUgjFNA1RRUstnNKURD-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-41" target="_QUgjFNA1RRUstnNKURD-45">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="_QUgjFNA1RRUstnNKURD-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-41" target="lqqFVd0cXysLdEYP2LKv-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="690" y="1350" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="690" y="1300" />
+              <mxPoint x="790" y="1300" />
+              <mxPoint x="790" y="800" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="_QUgjFNA1RRUstnNKURD-47" value="不通过" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="_QUgjFNA1RRUstnNKURD-46">
           <mxGeometry x="-0.1867" relative="1" as="geometry">
@@ -128,17 +135,6 @@
         </mxCell>
         <mxCell id="_QUgjFNA1RRUstnNKURD-41" value="是否检验通过" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="630" y="1200" width="120" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="Hx2TgM-1pY8E_GDSun2v-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-45" target="_QUgjFNA1RRUstnNKURD-1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="Hx2TgM-1pY8E_GDSun2v-2" value="TODO：？" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Hx2TgM-1pY8E_GDSun2v-1">
-          <mxGeometry x="-0.0703" y="-3" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="_QUgjFNA1RRUstnNKURD-45" value="系统自动：生产任务&lt;font color=&quot;#ff3333&quot;&gt;Waiting&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="630" y="1350" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jUqrcI9PQmbNbslNTejf-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jUqrcI9PQmbNbslNTejf-1" target="jUqrcI9PQmbNbslNTejf-5">
           <mxGeometry relative="1" as="geometry" />
@@ -407,10 +403,13 @@
     </mxGraphModel>
   </diagram>
   <diagram id="_LWm1WFVAVWuhsPnAqU8" name="末检">
-    <mxGraphModel dx="1434" dy="708" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1195" dy="590" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="W--wceIpf3ZIJTxg6zJi-1" value="生产流程" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
