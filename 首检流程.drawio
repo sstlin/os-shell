@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-04-20T08:59:04.104Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="ova6lM7EMsBJI-RmzcsK" version="21.1.9" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2023-04-20T09:14:58.666Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="dTrzd9kcJUWeKK9gIWg8" version="21.1.9" type="github" pages="4">
   <diagram name="首检" id="YWGKBsJNkr_up17E1PWP">
     <mxGraphModel dx="2131" dy="644" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -426,7 +426,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="_LWm1WFVAVWuhsPnAqU8" name="末检">
-    <mxGraphModel dx="1434" dy="1933" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2049" dy="2260" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -437,6 +437,9 @@
           <mxGeometry x="180" y="80" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="moQjm8TJXVEojTLoMieA-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="moQjm8TJXVEojTLoMieA-1" target="moQjm8TJXVEojTLoMieA-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bfkdnpItDRDFD1jOnCuc-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="moQjm8TJXVEojTLoMieA-1" target="bfkdnpItDRDFD1jOnCuc-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="moQjm8TJXVEojTLoMieA-1" value="ITC:报工" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -461,6 +464,9 @@
         <mxCell id="moQjm8TJXVEojTLoMieA-7" value="系统自动：生成末检单" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="380" y="190" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="zXlEqotSESXQ3yiaCQiU-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8fkyMR0r7NRCsUleKsVY-1" target="8fkyMR0r7NRCsUleKsVY-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="8fkyMR0r7NRCsUleKsVY-1" value="PAD:末检单列表" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="570" y="190" width="120" height="60" as="geometry" />
         </mxCell>
@@ -470,6 +476,46 @@
         <mxCell id="8fkyMR0r7NRCsUleKsVY-2" value="生产任务" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" vertex="1" parent="1">
           <mxGeometry x="179" y="-40" width="120" height="80" as="geometry" />
         </mxCell>
+        <mxCell id="zXlEqotSESXQ3yiaCQiU-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8fkyMR0r7NRCsUleKsVY-4" target="8fkyMR0r7NRCsUleKsVY-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8fkyMR0r7NRCsUleKsVY-4" value="PAD:输入检验结果" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bfkdnpItDRDFD1jOnCuc-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="zXlEqotSESXQ3yiaCQiU-1" target="bfkdnpItDRDFD1jOnCuc-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zXlEqotSESXQ3yiaCQiU-2" value="合格" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="bfkdnpItDRDFD1jOnCuc-3">
+          <mxGeometry x="-0.0776" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zXlEqotSESXQ3yiaCQiU-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8fkyMR0r7NRCsUleKsVY-5" target="zXlEqotSESXQ3yiaCQiU-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8fkyMR0r7NRCsUleKsVY-5" value="系统自动：判断末检结果" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="430" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bfkdnpItDRDFD1jOnCuc-1" value="生产入库流程" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zXlEqotSESXQ3yiaCQiU-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="zXlEqotSESXQ3yiaCQiU-1" target="zXlEqotSESXQ3yiaCQiU-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zXlEqotSESXQ3yiaCQiU-1" value="是否合格" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="530" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="zXlEqotSESXQ3yiaCQiU-6" value="缺陷流程" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="650" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="uBkUxRwPBYWh7s0ZBbOH" name="来料检(采购)">
+    <mxGraphModel dx="1434" dy="764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
       </root>
     </mxGraphModel>
   </diagram>
