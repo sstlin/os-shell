@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-04-20T00:33:29.519Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="pJkbK73ZvzHdwKRzEoVH" version="21.1.9" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-04-20T01:56:23.407Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="dmMmQO2R534hqvYJL30r" version="21.1.9" type="github" pages="2">
   <diagram name="首检" id="YWGKBsJNkr_up17E1PWP">
-    <mxGraphModel dx="2514" dy="899" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2131" dy="695" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -101,7 +101,7 @@
         <mxCell id="lqqFVd0cXysLdEYP2LKv-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-34" target="lqqFVd0cXysLdEYP2LKv-2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="_QUgjFNA1RRUstnNKURD-34" value="控制系统-首检项" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="_QUgjFNA1RRUstnNKURD-34" value="控制系统-首检项(换班、换天、换产品)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-10" y="860" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="_QUgjFNA1RRUstnNKURD-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_QUgjFNA1RRUstnNKURD-39" target="_QUgjFNA1RRUstnNKURD-41">
@@ -175,10 +175,25 @@
         <mxCell id="jUqrcI9PQmbNbslNTejf-6" value="PAD:开始检验任务" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="-50" y="1127.5" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="Hx2TgM-1pY8E_GDSun2v-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="jUqrcI9PQmbNbslNTejf-13" target="_8WzDl8Ad-TE-Ti9vL59-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="170" y="1381" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hx2TgM-1pY8E_GDSun2v-12" value="首检工单是否完成" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Hx2TgM-1pY8E_GDSun2v-9">
+          <mxGeometry x="0.1443" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="jUqrcI9PQmbNbslNTejf-13" value="系统自动：判断首检结果" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="-145" y="1351" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="lqqFVd0cXysLdEYP2LKv-1" value="" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+        <mxCell id="Hx2TgM-1pY8E_GDSun2v-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="lqqFVd0cXysLdEYP2LKv-1" target="_8WzDl8Ad-TE-Ti9vL59-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="230" y="1351" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lqqFVd0cXysLdEYP2LKv-1" value="部分生产具体流程" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
           <mxGeometry x="170" y="1240" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="lqqFVd0cXysLdEYP2LKv-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="lqqFVd0cXysLdEYP2LKv-2" target="_QUgjFNA1RRUstnNKURD-15">
@@ -198,6 +213,17 @@
         </mxCell>
         <mxCell id="gWJ6k5av3YUF6fjsv1VB-1" value="巡检流程" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
           <mxGeometry x="390" y="860" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Hx2TgM-1pY8E_GDSun2v-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="Hx2TgM-1pY8E_GDSun2v-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="230" y="1421" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Hx2TgM-1pY8E_GDSun2v-8" value="部分生产具体流程" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="1460" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_8WzDl8Ad-TE-Ti9vL59-2" value="是否可以首次报工" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="170" y="1340" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -234,6 +260,9 @@
             <mxPoint x="210" y="-250" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="9PY7XCxo2At1VD-LkKBr-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ibyI-lVYRKevvN_ZJGTm-1" target="9PY7XCxo2At1VD-LkKBr-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="ibyI-lVYRKevvN_ZJGTm-1" value="部分生产流程" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
           <mxGeometry x="90" y="90" width="120" height="60" as="geometry" />
         </mxCell>
@@ -244,6 +273,9 @@
           <mxGeometry x="90" y="-190" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="Nbuv63iFImUCDs5fSExb-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Nbuv63iFImUCDs5fSExb-4" target="Nbuv63iFImUCDs5fSExb-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9PY7XCxo2At1VD-LkKBr-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Nbuv63iFImUCDs5fSExb-4" target="9PY7XCxo2At1VD-LkKBr-2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Nbuv63iFImUCDs5fSExb-4" value="产品-工序:控制系统-巡检项" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -328,6 +360,21 @@
         </mxCell>
         <mxCell id="Nbuv63iFImUCDs5fSExb-35" value="生成巡检单" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="930" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9PY7XCxo2At1VD-LkKBr-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="9PY7XCxo2At1VD-LkKBr-1" target="9PY7XCxo2At1VD-LkKBr-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9PY7XCxo2At1VD-LkKBr-1" value="报工-报工数量" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="190" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9PY7XCxo2At1VD-LkKBr-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="9PY7XCxo2At1VD-LkKBr-2" target="9PY7XCxo2At1VD-LkKBr-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9PY7XCxo2At1VD-LkKBr-2" value="数量的巡检项进行计算" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="190" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9PY7XCxo2At1VD-LkKBr-5" value="生成巡检单" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="930" y="190" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
