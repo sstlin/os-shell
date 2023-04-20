@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-04-20T10:07:13.121Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="BP31P8vbDXCOo1wB7mIz" version="21.1.9" type="github" pages="4">
+<mxfile host="app.diagrams.net" modified="2023-04-20T10:17:11.140Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="onN7W--Hg1Hl978Q9QoW" version="21.1.9" type="github" pages="4">
   <diagram name="首检" id="YWGKBsJNkr_up17E1PWP">
     <mxGraphModel dx="2131" dy="644" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -512,7 +512,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="uBkUxRwPBYWh7s0ZBbOH" name="来料检(采购)">
-    <mxGraphModel dx="780" dy="754" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="650" dy="628" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -527,6 +527,14 @@
         </mxCell>
         <mxCell id="gD2lp3aX-JrG0GrmsEOI-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="gD2lp3aX-JrG0GrmsEOI-2" target="gD2lp3aX-JrG0GrmsEOI-4">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gD2lp3aX-JrG0GrmsEOI-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="gD2lp3aX-JrG0GrmsEOI-2" target="gD2lp3aX-JrG0GrmsEOI-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gD2lp3aX-JrG0GrmsEOI-11" value="触发" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="gD2lp3aX-JrG0GrmsEOI-10">
+          <mxGeometry x="0.2571" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="gD2lp3aX-JrG0GrmsEOI-2" value="PC:打印条码" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="150" y="260" width="120" height="60" as="geometry" />
