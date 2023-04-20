@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-04-20T04:56:09.551Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="xcJ38K8lTnxldHa9R6r1" version="21.1.9" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-04-20T04:57:51.571Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="Yea_ZeQgEHJrA9No333n" version="21.1.9" type="github" pages="2">
   <diagram name="首检" id="YWGKBsJNkr_up17E1PWP">
     <mxGraphModel dx="2131" dy="695" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -229,7 +229,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="QuqrbqREO6aCjU5Rk-fv" name="巡检">
-    <mxGraphModel dx="2022" dy="1759" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2514" dy="2002" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -381,6 +381,9 @@
         </mxCell>
         <mxCell id="qqCyT-0PEJE7pFEjeIZA-3" value="生产入库流程" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
           <mxGeometry x="90" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qqCyT-0PEJE7pFEjeIZA-5" value="PAD：巡检单列表" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="440" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
