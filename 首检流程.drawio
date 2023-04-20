@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-04-20T08:53:41.008Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="_XFswI_Oi92h8ThYQkWp" version="21.1.9" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2023-04-20T08:55:26.152Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="7Oto7K9rQPNT1szD89qW" version="21.1.9" type="github" pages="3">
   <diagram name="首检" id="YWGKBsJNkr_up17E1PWP">
     <mxGraphModel dx="2131" dy="644" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -225,7 +225,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="QuqrbqREO6aCjU5Rk-fv" name="巡检">
-    <mxGraphModel dx="1816" dy="1696" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2261" dy="1933" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -382,22 +382,25 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="qqCyT-0PEJE7pFEjeIZA-5" value="PAD：巡检单列表" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="90" y="440" width="120" height="60" as="geometry" />
+          <mxGeometry x="450" y="380" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="8mA1JqRhY78js5ODNibz-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="by9su82nCS7KGYf_Y7Sh-1" target="8mA1JqRhY78js5ODNibz-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="by9su82nCS7KGYf_Y7Sh-1" value="PAD:输入检验值" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="90" y="640" width="120" height="60" as="geometry" />
+          <mxGeometry x="450" y="580" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="8mA1JqRhY78js5ODNibz-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="by9su82nCS7KGYf_Y7Sh-2" target="by9su82nCS7KGYf_Y7Sh-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="by9su82nCS7KGYf_Y7Sh-2" value="PAD:开始巡检任务" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="90" y="540" width="120" height="60" as="geometry" />
+          <mxGeometry x="450" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BYTEJDmA92Sf9PxL2QmR-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8mA1JqRhY78js5ODNibz-1" target="qqCyT-0PEJE7pFEjeIZA-3">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="8mA1JqRhY78js5ODNibz-1" value="系统自动：判断巡检结果" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="90" y="740" width="120" height="60" as="geometry" />
+          <mxGeometry x="450" y="680" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="r8TY4saq4PScHRw9qWO5-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="r8TY4saq4PScHRw9qWO5-1" target="9PY7XCxo2At1VD-LkKBr-1">
           <mxGeometry relative="1" as="geometry" />
