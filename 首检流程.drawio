@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-04-20T04:54:14.805Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="N32fHKQ0Wp8119BxYAqw" version="21.1.9" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-04-20T04:54:54.991Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="DwLzIp7os6orpKCvby0-" version="21.1.9" type="github" pages="2">
   <diagram name="首检" id="YWGKBsJNkr_up17E1PWP">
     <mxGraphModel dx="2131" dy="695" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -241,7 +241,7 @@
         <mxCell id="Nbuv63iFImUCDs5fSExb-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="sPOlvWDDzQ_lASOODWdK-2" target="Nbuv63iFImUCDs5fSExb-6">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="sPOlvWDDzQ_lASOODWdK-2" value="完成首检工单" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="sPOlvWDDzQ_lASOODWdK-2" value="MC:完成首检工单&lt;br&gt;ITC:完成首检工单" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="90" y="-100" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="Nbuv63iFImUCDs5fSExb-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.503;exitY=0.906;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" source="Nbuv63iFImUCDs5fSExb-10" target="Nbuv63iFImUCDs5fSExb-1">
