@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-04-21T11:05:12.524Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="QMv3rgWPXXOZaCSS8FkP" version="21.2.1" type="github" pages="6">
+<mxfile host="app.diagrams.net" modified="2023-04-21T11:05:31.741Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="escUzXv4u7X5DiPzeCUX" version="21.2.1" type="github" pages="6">
   <diagram name="首检" id="YWGKBsJNkr_up17E1PWP">
     <mxGraphModel dx="2261" dy="764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -720,6 +720,24 @@
         </mxCell>
         <mxCell id="OOc0uE7Px6DqCw4yFESm-4" value="PC：手动新增&lt;br&gt;缺陷登记，输入子批次编号，缺陷类型s" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="280" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="k_hySr48XUdewEIdt8GR-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="k_hySr48XUdewEIdt8GR-1" target="k_hySr48XUdewEIdt8GR-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k_hySr48XUdewEIdt8GR-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="k_hySr48XUdewEIdt8GR-1" target="k_hySr48XUdewEIdt8GR-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k_hySr48XUdewEIdt8GR-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="k_hySr48XUdewEIdt8GR-1" target="k_hySr48XUdewEIdt8GR-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k_hySr48XUdewEIdt8GR-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="k_hySr48XUdewEIdt8GR-1" target="k_hySr48XUdewEIdt8GR-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k_hySr48XUdewEIdt8GR-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="k_hySr48XUdewEIdt8GR-1" target="k_hySr48XUdewEIdt8GR-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k_hySr48XUdewEIdt8GR-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="k_hySr48XUdewEIdt8GR-1" target="k_hySr48XUdewEIdt8GR-10">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="k_hySr48XUdewEIdt8GR-1" value="缺陷评审" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="120" y="310" width="120" height="60" as="geometry" />
