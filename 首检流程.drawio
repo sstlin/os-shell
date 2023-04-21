@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-04-21T07:36:20.326Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="hw5oYiqKZHWWfIzrI0KF" version="21.2.1" type="github" pages="6">
+<mxfile host="app.diagrams.net" modified="2023-04-21T07:46:29.036Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="7gf-r4WxuHtrt0jQb2GK" version="21.2.1" type="github" pages="6">
   <diagram name="首检" id="YWGKBsJNkr_up17E1PWP">
-    <mxGraphModel dx="2261" dy="764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2261" dy="796" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -225,7 +225,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="QuqrbqREO6aCjU5Rk-fv" name="巡检">
-    <mxGraphModel dx="2261" dy="1933" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2022" dy="1832" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -237,7 +237,7 @@
         <mxCell id="Nbuv63iFImUCDs5fSExb-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="sPOlvWDDzQ_lASOODWdK-2" target="Nbuv63iFImUCDs5fSExb-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="sPOlvWDDzQ_lASOODWdK-2" value="MC:完成首检工单&lt;br&gt;ITC:完成首检工单" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="sPOlvWDDzQ_lASOODWdK-2" value="PAD:完成首检工单&lt;br&gt;ITC:完成首检工单" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="90" y="-100" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="Nbuv63iFImUCDs5fSExb-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.503;exitY=0.906;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;" parent="1" source="Nbuv63iFImUCDs5fSExb-10" target="Nbuv63iFImUCDs5fSExb-1" edge="1">
@@ -421,6 +421,12 @@
         </mxCell>
         <mxCell id="r8TY4saq4PScHRw9qWO5-4" value="ITC：暂停/继续任务" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="90" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NfcqoT8IN5cspJbkM-LO-1" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="80" y="-350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BmDMqO9-jLaYbeb6YTcH-1" value="需要根据同一时间巡检项合并为一个巡检工单" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;arcSize=0;" vertex="1" parent="1">
+          <mxGeometry x="780" y="-280" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
