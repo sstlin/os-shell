@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-04-21T09:35:57.315Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="WM8hRoU2qn0PCyvcc7Hg" version="21.2.1" type="github" pages="6">
+<mxfile host="app.diagrams.net" modified="2023-04-21T10:30:13.805Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="OWYJBz1wWfHULCafgI6S" version="21.2.1" type="github" pages="6">
   <diagram name="首检" id="YWGKBsJNkr_up17E1PWP">
-    <mxGraphModel dx="2261" dy="796" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2261" dy="764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -225,7 +225,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="QuqrbqREO6aCjU5Rk-fv" name="巡检">
-    <mxGraphModel dx="2022" dy="1832" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -432,7 +432,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="_LWm1WFVAVWuhsPnAqU8" name="末检">
-    <mxGraphModel dx="1194" dy="1935" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -508,7 +508,7 @@
         <mxCell id="zXlEqotSESXQ3yiaCQiU-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="zXlEqotSESXQ3yiaCQiU-1" target="zXlEqotSESXQ3yiaCQiU-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="HxXLffM4yVM8TYq2Ajp0-1" value="不合格" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="zXlEqotSESXQ3yiaCQiU-7">
+        <mxCell id="HxXLffM4yVM8TYq2Ajp0-1" value="不合格" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="zXlEqotSESXQ3yiaCQiU-7">
           <mxGeometry y="3" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
@@ -701,7 +701,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="OOc0uE7Px6DqCw4yFESm-1" value="新增缺陷登记" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="OOc0uE7Px6DqCw4yFESm-1" value="新增缺陷登记(直接输入缺陷类型s)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="120" y="210" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="OOc0uE7Px6DqCw4yFESm-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="OOc0uE7Px6DqCw4yFESm-2" target="OOc0uE7Px6DqCw4yFESm-1">
